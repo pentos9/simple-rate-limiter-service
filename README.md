@@ -84,6 +84,91 @@ public class LuaScriptUtil {
 
 ```
 
+# Normal use case and abnormal case
+
+call the DEMO API: /users/search (GET method)
+```$xslt
+curl -X GET "http://localhost:5100/users/search" -H "accept: */*"
+```
+
+a successful response:
+```$xslt
+[
+  {
+    "id": 1,
+    "username": "NKDNVgLNtGdLHMs",
+    "address": "address-2eb45c5f-6784-49b8-a259-2936dbaa88ab",
+    "phoneNumber": "mpuBOvUQXUR"
+  },
+  {
+    "id": 2,
+    "username": "kxxiJzBtJFMWyDy",
+    "address": "address-66f4138d-d6be-4986-a2db-5ab32be6febb",
+    "phoneNumber": "Vh4EmZmt5Y2"
+  },
+  {
+    "id": 3,
+    "username": "uOTempAQcfMcGvE",
+    "address": "address-32bf4a45-36a1-4342-926d-b8139c9aa68b",
+    "phoneNumber": "BblS9KCRi54"
+  },
+  {
+    "id": 4,
+    "username": "KJrKzHIHabYBdlK",
+    "address": "address-3d71ffbf-e0d0-4afd-9b8b-c6f2a312fbd0",
+    "phoneNumber": "AjvDDBYuiV7"
+  },
+  {
+    "id": 5,
+    "username": "ZYAFulIcQbwoUYH",
+    "address": "address-405f8520-43f0-4fcb-a6c8-f5446a31b32a",
+    "phoneNumber": "4nTj0vLzDQ9"
+  },
+  {
+    "id": 6,
+    "username": "bRBUwxTKyWcJrcW",
+    "address": "address-3aa12ef0-13b4-4898-8ab2-8fcae2bbcf9d",
+    "phoneNumber": "RqH4DeyQZtd"
+  },
+  {
+    "id": 7,
+    "username": "BydqDGGqHpkuQGE",
+    "address": "address-8f2ebf40-d720-4a41-ac74-6d01ae93699b",
+    "phoneNumber": "8kZa8bNTF98"
+  },
+  {
+    "id": 8,
+    "username": "RcnMloairPzfqqf",
+    "address": "address-4ee35bcf-4a84-48f0-8d5d-8b2d9b578609",
+    "phoneNumber": "Sq4eZOhwtxH"
+  },
+  {
+    "id": 9,
+    "username": "uFTZatPosbqHHHm",
+    "address": "address-ea72a6cf-17f6-4532-8162-c8ee29751b07",
+    "phoneNumber": "jrzTbIbTjrE"
+  },
+  {
+    "id": 10,
+    "username": "IedCxFlWhgFtNIX",
+    "address": "address-bc66a289-126a-47fe-9f31-bdc3e3470aef",
+    "phoneNumber": "CV9rxIFWv22"
+  }
+]
+
+```
+
+## Abnormal case 
+
+Execute when it reaches the max TPS, and what you will get : 
+```$xslt
+
+{
+  "error_code": 500,
+  "error_message": "Too Many Request Error"
+}
+```
+
 # Unit Test
 
 Unit Test Location: /simple-rate-limiter-service/src/test
