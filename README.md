@@ -165,7 +165,7 @@ Execute when it reaches the max TPS, and what you will get :
 
 {
   "error_code": 500,
-  "error_message": "Too Many Request Error"
+  "error_message": "Too Many Request"
 }
 ```
 
