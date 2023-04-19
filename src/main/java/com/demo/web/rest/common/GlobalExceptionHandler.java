@@ -1,6 +1,8 @@
 package com.demo.web.rest.common;
 
 import com.demo.web.rest.errors.BadRequestException;
+import com.demo.web.rest.errors.BaseException;
+import com.demo.web.rest.errors.BizException;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,22 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResult handleBadRequestException(BadRequestException ex) {
         log.error("handleBadRequestException error message:{}", ex.getMessage());
+        ErrorResult errorResult = new ErrorResult(ex.getErrorCode(), ex.getMessage());
+        return errorResult;
+    }
+
+    @ExceptionHandler(BizException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResult handleBizException(BizException ex) {
+        log.error("handleBizException error message:{}", ex.getMessage());
+        ErrorResult errorResult = new ErrorResult(ex.getErrorCode(), ex.getMessage());
+        return errorResult;
+    }
+
+    @ExceptionHandler(BaseException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResult handleBaseException(BaseException ex) {
+        log.error("handleBaseException error message:{}", ex.getMessage());
         ErrorResult errorResult = new ErrorResult(ex.getErrorCode(), ex.getMessage());
         return errorResult;
     }
