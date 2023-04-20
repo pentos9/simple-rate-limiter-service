@@ -160,11 +160,11 @@ a successful response:
 
 ## Abnormal case 
 
-Execute when it reaches the max TPS, and what you will get : 
+Execute when it reaches the max TPS, and what you will get would be like this: 
 ```$xslt
 
 {
-  "error_code": 500,
+  "error_code": 429,
   "error_message": "Too Many Request"
 }
 ```
